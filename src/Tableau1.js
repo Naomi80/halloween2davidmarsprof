@@ -112,10 +112,10 @@ class Tableau1 extends Phaser.Scene{
          * Arbre
          * @type {Phaser.GameObjects.Image}
          */
-        let tree1=this.add.image(200,350, 'gTree1').setOrigin(0,1);
+        let tree1=this.add.image(260,350, 'gTree1').setOrigin(0,1);
         //tree1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree1);
-        let tree2=this.add.image(0,350, 'gTree2').setOrigin(0,1);
+        let tree2=this.add.image(0,450, 'gTree2').setOrigin(0,1);
         //tree2.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree2);
         tree2.flipX = true
@@ -123,10 +123,10 @@ class Tableau1 extends Phaser.Scene{
          * Champignon
          * @type {Phaser.GameObjects.Image}
          */
-        let mushroom1=this.add.image(110,350, 'g-mushroom1').setOrigin(0,1);
+        let mushroom1=this.add.image(120,350, 'g-mushroom1').setOrigin(0,1);
         //mushroom1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(mushroom1);
-        mushroom1.angle=5;
+        mushroom1.angle=10;
         /**
          * Terrain 1
          * @type {Phaser.GameObjects.Image}
