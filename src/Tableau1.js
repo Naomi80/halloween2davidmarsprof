@@ -15,6 +15,7 @@ class Tableau1 extends Phaser.Scene{
 
         //bg 1 (gris légèrement flou)
         this.load.image('bg1-terrain-3', 'assets/level/background-1/bg-terrain-3.png');
+        this.load.image('bg-terrain-1', 'assets/level/background-1/bg-terrain-1.png');
 
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
@@ -97,6 +98,8 @@ class Tableau1 extends Phaser.Scene{
          */
         let bg1Terrain3=this.add.image(-300,200, 'bg1-terrain-3').setOrigin(0,0);
         this.bg1Container.add(bg1Terrain3);
+        let bgTerrain1=this.add.image(700,200, 'bg-terrain-1').setOrigin(0,0);
+        this.bg1Container.add(bgTerrain1);
 
         //-------------ground (premier plan noir)---------------------------
 
@@ -123,13 +126,12 @@ class Tableau1 extends Phaser.Scene{
          * Terrain 2
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid2=this.add.image(gMid1.x+gMid1.width+1,350, 'gMid').setOrigin(0,0); //on rajoute 1 px pour l'exemple
-        this.groundContainer.add(gMid2);
+
         /**
          * Terrain 3
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid3=this.add.image(gMid2.x+gMid2.width,350, 'gRight').setOrigin(0,0);
+        let gMid3=this.add.image(gMid1.x+gMid1.width,350, 'gRight').setOrigin(0,0);
         this.groundContainer.add(gMid3);
         /**
          * De l'herbe en textures qui se répète
