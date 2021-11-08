@@ -28,7 +28,9 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gLeft', 'assets/level/ground/g-left.png');
         this.load.image('g-stone-4', 'assets/level/ground/g-stone-4.png');
         this.load.image('g-stone-5', 'assets/level/ground/g-stone-5.png');
-        this.load.image('fallenTree2', 'assets/level/ground/g-fallen-tree-2.png');
+        this.load.image('fellenTree1', 'assets/level/ground/g-fellen-tree-1.png');
+        this.load.image('gSpike1', 'assets/level/ground/g-spike-1.png');
+        this.load.image('gBridge', 'assets/level/ground/g-wooden-bridge.png');
 
 
 
@@ -135,15 +137,16 @@ class Tableau1 extends Phaser.Scene{
         //tree2.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree2);
         tree2.flipX = true
-        let tree3=this.add.image(220,375, 'gTree3').setOrigin(0,1);
+        let tree3=this.add.image(215,375, 'gTree3').setOrigin(0,1);
         //tree3.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree3);
         let tree4=this.add.image(1100,450, 'gTree1').setOrigin(0,1);
         //tree1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree4);
-        let fallenTree2=this.add.image(1600,375, 'g-fallen-tree-2').setOrigin(0,1);
-        //fallenTree2.setTintFill(0xFF0000); // pratique pour dbugger
-        this.groundContainer.add(fallenTree2);
+        let fellenTree1=this.add.image(1500,385, 'fellenTree1').setOrigin(0,1);
+      //  fellenTree1etTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(fellenTree1);
+        fellenTree1.angle=3
         /**
          * Pierres
          * @type {Phaser.GameObjects.Image}
@@ -213,11 +216,21 @@ class Tableau1 extends Phaser.Scene{
         let grass2=this.add.tileSprite(0,370,gMid3.x+gMid3.width-40,50,'g-grass-3').setOrigin(0,1)
         this.groundContainer.add(grass2);
         /**
-         * Pont
-         * @type {Phaser.GameObjects.Image.TileSprite}
+         * herbe pointue
+         * @type {Phaser.GameObjects.TileSprite}
          */
-        //let gBridge=this.add.tileSprite(400,300,gMid3.x+gMid3.width-40,50,'g-wooder-bridge').setOrigin(0,1)
-        //this.groundContainer.add(gBridge);
+        let gSpike1=this.add.image(1750,475, 'gSpike1').setOrigin(0,0);
+        this.groundContainer.add(gSpike1);
+        let gSpike2=this.add.image(1600,475, 'gSpike1').setOrigin(0,0);
+        this.groundContainer.add(gSpike2);
+        /**
+         * Pont
+         * @type {Phaser.GameObjects.Image}
+         */
+        let gBridge=this.add.image(350,370,'gBridge').setOrigin(0,1)
+        this.groundContainer.add(gBridge);
+        gBridge.angle=-2
+
         /**
          * filtre type film au premier plan
          * @type {Phaser.GameObjects.Sprite}
@@ -290,7 +303,7 @@ class Tableau1 extends Phaser.Scene{
      */
     update(){
         //déplacement de la caméra
-        this.cameras.main.scrollX+=this.speed; // on aurait pu écrire : this.cameras.main.scrollX= this.cameras.main.scrollX + this.speed;
+        this.cameras.main.scrollX+=this.speed*5; // on aurait pu écrire : this.cameras.main.scrollX= this.cameras.main.scrollX + this.speed;
 
         //petit effet de vibrance sur le filtre film au tout premier plan
         this.filterFilm.setAlpha(Phaser.Math.Between(95,100)/100)
