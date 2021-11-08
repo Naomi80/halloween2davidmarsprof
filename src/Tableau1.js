@@ -26,6 +26,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gTree3', 'assets/level/ground/g-tree-3.png');
         this.load.image('g-mushroom1', 'assets/level/ground/g-mushroom1.png');
         this.load.image('gLeft', 'assets/level/ground/g-left.png');
+        this.load.image('gStone1', 'assets/level/ground/g-stone-1.png');
         this.load.image('g-stone-4', 'assets/level/ground/g-stone-4.png');
         this.load.image('g-stone-5', 'assets/level/ground/g-stone-5.png');
         this.load.image('fellenTree1', 'assets/level/ground/g-fellen-tree-1.png');
@@ -156,6 +157,9 @@ class Tableau1 extends Phaser.Scene{
          * Pierres
          * @type {Phaser.GameObjects.Image}
          */
+        let gStone1 =this.add.image(300,355, 'gStone1').setOrigin(0,1);
+        //gstone4.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(gStone1);
         let gstone4 =this.add.image(820,385, 'g-stone-4').setOrigin(0,1);
         //gstone4.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(gstone4);
@@ -170,6 +174,10 @@ class Tableau1 extends Phaser.Scene{
         //mushroom1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(mushroom1);
         mushroom1.angle=10;
+        let mushroom2=this.add.image(1350,400, 'g-mushroom1').setOrigin(0,1);
+        //mushroom1.setTintFill(0xFF0000); // pratique pour dbugger
+        this.groundContainer.add(mushroom2);
+        mushroom1.angle=-5;
         /**
          * Terrain 1
          * @type {Phaser.GameObjects.Image}
