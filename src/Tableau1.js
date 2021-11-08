@@ -30,8 +30,11 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('g-stone-5', 'assets/level/ground/g-stone-5.png');
         this.load.image('fellenTree1', 'assets/level/ground/g-fellen-tree-1.png');
         this.load.image('gSpike1', 'assets/level/ground/g-spike-1.png');
+        this.load.image('gWater', 'assets/level/ground/g-water.png');
         this.load.image('gBridge', 'assets/level/ground/g-wooden-bridge.png');
         this.load.image('gBox2', 'assets/level/ground/g-box-2.png');
+        this.load.image('gGrass5', 'assets/level/ground/g-grass-5.png');
+
 
 
 
@@ -200,10 +203,12 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(gMid9);
         /**
          * Eau
-         *   * @type {Phaser.GameObjects.TileSprite>}
+         *   * @type {Phaser.GameObjects.Image}
          */
-      // let gWater=this.add.tileSprite(400,300,gMid3.x+gMid3.width,375,'g-water').setOrigin(0,1);
-       //this.groundContainer.add(gWater);
+      let gWater=this.add.image(gMid1.x+gMid1.width+200,650,'gWater').setOrigin(0,1);
+      this.groundContainer.add(gWater);
+        let gWater2=this.add.image(gMid1.x+gMid1.width+230,650,'gWater').setOrigin(0,1);
+        this.groundContainer.add(gWater2);
        //(gMid3.x+gMid3.width,375, 'g-water')
         /**
          * De l'herbe en textures qui se répète
@@ -225,6 +230,12 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(gSpike1);
         let gSpike2=this.add.image(1600,475, 'gSpike1').setOrigin(0,0);
         this.groundContainer.add(gSpike2);
+        let gSpike3=this.add.image(375,450, 'gSpike1').setOrigin(0,0);
+        this.groundContainer.add(gSpike3);
+        let gSpike4=this.add.image(550,450, 'gSpike1').setOrigin(0,0);
+        this.groundContainer.add(gSpike4);
+        let gSpike5=this.add.image(700,450, 'gSpike1').setOrigin(0,0);
+        this.groundContainer.add(gSpike5);
         /**
          * Pont
          * @type {Phaser.GameObjects.Image}
