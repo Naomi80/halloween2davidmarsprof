@@ -17,7 +17,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('bg1-terrain-3', 'assets/level/background-1/bg-terrain-3.png');
         this.load.image('bg-terrain-1', 'assets/level/background-1/bg-terrain-1.png');
         this.load.image('bgTree2', 'assets/level/background-1/bg-tree-2.png');
-
+        this.load.image('bgTree3', 'assets/level/background-1/bg-tree-3.png');
+        this.load.image('bgTree1', 'assets/level/background-1/bg-tree-1.png');
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
         this.load.image('gRight', 'assets/level/ground/g-right.png');
@@ -123,7 +124,10 @@ class Tableau1 extends Phaser.Scene{
          * Arbre
          * @type {Phaser.GameObjects.Image}
          */
-
+        let bgTree3=this.add.image(75,-150, 'bgTree3').setOrigin(0,0);
+        this.bg1Container.add(bgTree3);
+        let bgTree1=this.add.image(-48,-50, 'bgTree1').setOrigin(0,0);
+        this.bg1Container.add(bgTree1);
 
         //-------------ground (premier plan noir)---------------------------
 
