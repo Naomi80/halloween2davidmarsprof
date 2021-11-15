@@ -35,9 +35,11 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gBridge', 'assets/level/ground/g-wooden-bridge.png');
         this.load.image('gBox2', 'assets/level/ground/g-box-2.png');
         this.load.image('gGrass5', 'assets/level/ground/g-grass-5.png');
-
-
-
+        this.load.image('gGrass1', 'assets/level/ground/g-grass-1.png');
+        this.load.image('gGrass3', 'assets/level/ground/g-grass-3.png');
+        this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
+        this.load.image('gGrass6', 'assets/level/ground/g-grass-3.png');
+        this.load.image('gGrass7', 'assets/level/ground/g-grass-1.png');
 
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
@@ -230,6 +232,7 @@ class Tableau1 extends Phaser.Scene{
          */
         let grass2=this.add.tileSprite(0,370,gMid3.x+gMid3.width-40,50,'g-grass-3').setOrigin(0,1)
         this.groundContainer.add(grass2);
+
         /**
          * herbe pointue
          * @type {Phaser.GameObjects.TileSprite}
@@ -244,6 +247,16 @@ class Tableau1 extends Phaser.Scene{
         this.groundContainer.add(gSpike4);
         let gSpike5=this.add.image(700,450, 'gSpike1').setOrigin(0,0);
         this.groundContainer.add(gSpike5);
+        let gGrass1=this.add.image(1300,340, 'gGrass1').setOrigin(0,0);
+        this.groundContainer.add(gGrass1);
+        let gGrass3=this.add.image(1470,340, 'gGrass3').setOrigin(0,0);
+        this.groundContainer.add(gGrass3);
+        let gGrass2=this.add.image(1950,340, 'gGrass2').setOrigin(0,0);
+        this.groundContainer.add(gGrass2);
+        let gGrass6=this.add.image(1085,330, 'gGrass6').setOrigin(0,0);
+        this.groundContainer.add(gGrass6);
+        let gGrass7=this.add.image(1060,345, 'gGrass7').setOrigin(0,0);
+        this.groundContainer.add(gGrass7);
         /**
          * Pont
          * @type {Phaser.GameObjects.Image}
