@@ -2,11 +2,11 @@
  * ALGO: ceci est une classe...
  * Vous verrez ça plus tard en détail avec Rémi, pour l'instant on n'a pas trop besoin de savoir à quoi ça sert.
  */
-class Tableau1 extends Phaser.Scene{
+class Tableau1 extends Phaser.Scene {
     /**
      * Précharge les assets
      */
-    preload(){
+    preload() {
         //bg 2 (tout au fond et très flou)
         this.load.image('bg2-terrain-2', 'assets/level/background-2/bg2-terrain-2.png');
         this.load.image('bg2Tree1', 'assets/level/background-2/bg2-tree-1.png');
@@ -51,20 +51,20 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
         this.load.image('gGrass6', 'assets/level/ground/g-grass-3.png');
         this.load.image('gGrass7', 'assets/level/ground/g-grass-1.png');
-
+        //Characters
         for (let id = 1; id <= 10; id++) {
-            this.load.image('layer' + id, 'Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
-
+            this.load.image('layer' + id, 'assets/Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
+        }
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
-        for(let i=1;i<=5;i++){
-            this.load.image('g-grass-'+i, 'assets/level/ground/g-grass-'+i+'.png');
+        for (let i = 1; i <= 5; i++) {
+            this.load.image('g-grass-' + i, 'assets/level/ground/g-grass-' + i + '.png');
         }
 
         //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent
-        for(let f=1;f<=3;f++){
-            this.load.image('filterFilm'+f, 'assets/level/filters/film/frame-'+f+'.png');
+        for (let f = 1; f <= 3; f++) {
+            this.load.image('filterFilm' + f, 'assets/level/filters/film/frame-' + f + '.png');
         }
 
         //this.load.image('filterFilm1', 'assets/level/filters/film/frame-1.png');
@@ -72,23 +72,24 @@ class Tableau1 extends Phaser.Scene{
         //this.load.image('filterFilm3', 'assets/level/filters/film/frame-3.png');
 
         //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
-        for(let bg=1;bg<=3;bg++)
-        this.load.image('bg-animation-'+bg, 'assets/level/background-2/bg-animation/bg-animation-'+bg+'.png');
+        for (let bg = 1; bg <= 3; bg++) {
+            this.load.image('bg-animation-' + bg, 'assets/level/background-2/bg-animation/bg-animation-' + bg + '.png');
+        }
+        /**
+         * Crée la scène
+         * TODO élèves : reproduire à l'identique assets/level/00-preview-example/sample1.jpg
+         * TODO élèves : plus tard, continuez le décor vers la droite en vous servant des assets mis à votre disposition
+         */
 
     }
 
-    /**
-     * Crée la scène
-     * TODO élèves : reproduire à l'identique assets/level/00-preview-example/sample1.jpg
-     * TODO élèves : plus tard, continuez le décor vers la droite en vous servant des assets mis à votre disposition
-     */
-    create(){
+    create() {
 
         /**
          * Fond très clair avec une trame
          * @type {Phaser.GameObjects.Sprite}
          */
-        let bgAnimationA=this.add.sprite(0,0, 'bg-animation-a').setOrigin(0,0);
+        let bgAnimationA = this.add.sprite(0, 0, 'bg-animation-a').setOrigin(0, 0);
 
         //--------------background 2 (tout au fond et flou)--------------------
 
@@ -97,30 +98,29 @@ class Tableau1 extends Phaser.Scene{
          * @type {Phaser.GameObjects.Container}
          * @see https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.Container.html
          */
-        this.bg2Container=this.add.container(0,0);
+        this.bg2Container = this.add.container(0, 0);
         /**
          * Terrain dans bg2
          * @type {Phaser.GameObjects.Image}
          */
-        let bg2Terrain2=this.add.image(-300,100, 'bg2-terrain-2').setOrigin(0,0);
+        let bg2Terrain2 = this.add.image(-300, 100, 'bg2-terrain-2').setOrigin(0, 0);
         this.bg2Container.add(bg2Terrain2);
-        let bg2terrain1=this.add.image(900,120, 'bg2terrain1').setOrigin(0,0);
+        let bg2terrain1 = this.add.image(900, 120, 'bg2terrain1').setOrigin(0, 0);
         this.bg2Container.add(bg2terrain1);
-        let bg2terrain4=this.add.image(450,120, 'bg2terrain4').setOrigin(0,0);
+        let bg2terrain4 = this.add.image(450, 120, 'bg2terrain4').setOrigin(0, 0);
         this.bg2Container.add(bg2terrain4);
         /**
          * Arbre dans bg2
          * @type {Phaser.GameObjects.Image}
          */
-        let bg2Tree2=this.add.image(250,-50, 'bg2-tree-2').setOrigin(0,0);
+        let bg2Tree2 = this.add.image(250, -50, 'bg2-tree-2').setOrigin(0, 0);
         this.bg2Container.add(bg2Tree2);
-        bg2Tree2.angle=-5; //pencher l'arbre de -5 degrès
-        let bg2Tree3=this.add.image(930,-100, 'bg2-tree-3').setOrigin(0,0);
+        bg2Tree2.angle = -5; //pencher l'arbre de -5 degrès
+        let bg2Tree3 = this.add.image(930, -100, 'bg2-tree-3').setOrigin(0, 0);
         this.bg2Container.add(bg2Tree3);
-        bg2Tree3.angle=-5;
-        let bg2Tree1=this.add.image(475,-150, 'bg2-tree-1').setOrigin(0,0);
+        bg2Tree3.angle = -5;
+        let bg2Tree1 = this.add.image(475, -150, 'bg2-tree-1').setOrigin(0, 0);
         this.bg2Container.add(bg2Tree1);
-
 
 
         //--------------background 1 (gris) --------------------
@@ -129,217 +129,231 @@ class Tableau1 extends Phaser.Scene{
          * contient tous les éléments du background 1 (gris)
          * @type {Phaser.GameObjects.Container}
          */
-        this.bg1Container=this.add.container(0,0);
+        this.bg1Container = this.add.container(0, 0);
         /**
          * Terrain
          * @type {Phaser.GameObjects.Image}
          */
-        let bg1Terrain3=this.add.image(-400,200, 'bg1-terrain-3').setOrigin(0,0);
+        let bg1Terrain3 = this.add.image(-400, 200, 'bg1-terrain-3').setOrigin(0, 0);
         this.bg1Container.add(bg1Terrain3);
-        let bgTerrain1=this.add.image(300,250, 'bg-terrain-1').setOrigin(0,0);
+        let bgTerrain1 = this.add.image(300, 250, 'bg-terrain-1').setOrigin(0, 0);
         this.bg1Container.add(bgTerrain1);
-        let bgTerrain4=this.add.image(900,200, 'bgTerrain4').setOrigin(0,0);
+        let bgTerrain4 = this.add.image(900, 200, 'bgTerrain4').setOrigin(0, 0);
         this.bg1Container.add(bgTerrain4);
         /**
          * Arbre
          * @type {Phaser.GameObjects.Image}
          */
-        let bgTree3=this.add.image(75,-150, 'bgTree3').setOrigin(0,0);
+        let bgTree3 = this.add.image(75, -150, 'bgTree3').setOrigin(0, 0);
         this.bg1Container.add(bgTree3);
-        let bgTree1=this.add.image(-48,-50, 'bgTree1').setOrigin(0,0);
+        let bgTree1 = this.add.image(-48, -50, 'bgTree1').setOrigin(0, 0);
         this.bg1Container.add(bgTree1);
-        let bgTree2=this.add.image(580,-40, 'bgTree2').setOrigin(0,0);
+        let bgTree2 = this.add.image(580, -40, 'bgTree2').setOrigin(0, 0);
         this.bg1Container.add(bgTree2);
-        let bgTree4=this.add.image(1125,-100, 'bgTree4').setOrigin(0,0);
+        let bgTree4 = this.add.image(1125, -100, 'bgTree4').setOrigin(0, 0);
         bgTree4.flipX = true
         this.bg1Container.add(bgTree4);
-        let bgTree5=this.add.image(1250,-100, 'bgTree5').setOrigin(0,0);
+        let bgTree5 = this.add.image(1250, -100, 'bgTree5').setOrigin(0, 0);
         this.bg1Container.add(bgTree5);
         bgTree5.flipX = true
         /**
          * Pierres
          * @type {Phaser.GameObjects.Image}
          */
-        let bgStone4=this.add.image(575,450, 'bgStone4').setOrigin(0,0);
+        let bgStone4 = this.add.image(575, 450, 'bgStone4').setOrigin(0, 0);
         this.bg1Container.add(bgStone4);
         /**
          * Herbe
          * @type {Phaser.GameObjects.Image}
          */
-        let bgGrass5=this.add.image(500,430, 'bgGrass5').setOrigin(0,0);
+        let bgGrass5 = this.add.image(500, 430, 'bgGrass5').setOrigin(0, 0);
         this.bg1Container.add(bgGrass5);
-        let bgGrass6=this.add.image(400,430, 'bgGrass6').setOrigin(0,0);
+        let bgGrass6 = this.add.image(400, 430, 'bgGrass6').setOrigin(0, 0);
         this.bg1Container.add(bgGrass6);
         /**
          * Pont
          * @type {Phaser.GameObjects.Image}
          */
-        let bgBridge=this.add.image(750,240, 'bgBridge').setOrigin(0,0);
+        let bgBridge = this.add.image(750, 240, 'bgBridge').setOrigin(0, 0);
         this.bg1Container.add(bgBridge);
-        bgBridge.angle=-2;
+        bgBridge.angle = -2;
         //-------------ground (premier plan noir)---------------------------
 
         /**
          * contient tous les éléments du premier plan (noir)
          * @type {Phaser.GameObjects.Container}
          */
-        this.groundContainer=this.add.container(0,0);
+        this.groundContainer = this.add.container(0, 0);
         /**
          * Arbre
          * @type {Phaser.GameObjects.Image}
          */
-        let tree1=this.add.image(880,450, 'gTree1').setOrigin(0,1);
+        let tree1 = this.add.image(880, 450, 'gTree1').setOrigin(0, 1);
         //tree1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree1);
-        tree1.angle=-10
+        tree1.angle = -10
         tree1.flipX = true
-        let tree2=this.add.image(0,450, 'gTree2').setOrigin(0,1);
+        let tree2 = this.add.image(0, 450, 'gTree2').setOrigin(0, 1);
         //tree2.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree2);
         tree2.flipX = true
-        let tree3=this.add.image(220,375, 'gTree1').setOrigin(0,1);
+        let tree3 = this.add.image(220, 375, 'gTree1').setOrigin(0, 1);
         //tree3.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree3);
-        let tree4=this.add.image(1100,450, 'gTree1').setOrigin(0,1);
+        let tree4 = this.add.image(1100, 450, 'gTree1').setOrigin(0, 1);
         //tree1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(tree4);
-        let fellenTree1=this.add.image(1500,385, 'fellenTree1').setOrigin(0,1);
-      //  fellenTree1etTintFill(0xFF0000); // pratique pour dbugger
+        let fellenTree1 = this.add.image(1500, 385, 'fellenTree1').setOrigin(0, 1);
+        //  fellenTree1etTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(fellenTree1);
-        fellenTree1.angle=3
+        fellenTree1.angle = 3
         /**
          * Pierres
          * @type {Phaser.GameObjects.Image}
          */
-        let gStone1 =this.add.image(300,355, 'gStone1').setOrigin(0,1);
+        let gStone1 = this.add.image(300, 355, 'gStone1').setOrigin(0, 1);
         //gstone4.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(gStone1);
-        let gstone4 =this.add.image(820,385, 'g-stone-4').setOrigin(0,1);
+        let gstone4 = this.add.image(820, 385, 'g-stone-4').setOrigin(0, 1);
         //gstone4.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(gstone4);
-        let gstone5 =this.add.image(1115,385, 'g-stone-5').setOrigin(0,1);
+        let gstone5 = this.add.image(1115, 385, 'g-stone-5').setOrigin(0, 1);
         //gstone1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(gstone5);
         /**
          * Champignon
          * @type {Phaser.GameObjects.Image}
          */
-        let mushroom1=this.add.image(120,360, 'g-mushroom1').setOrigin(0,1);
+        let mushroom1 = this.add.image(120, 360, 'g-mushroom1').setOrigin(0, 1);
         //mushroom1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(mushroom1);
-        mushroom1.angle=10;
-        let mushroom2=this.add.image(1350,400, 'g-mushroom1').setOrigin(0,1);
+        mushroom1.angle = 10;
+        let mushroom2 = this.add.image(1350, 400, 'g-mushroom1').setOrigin(0, 1);
         //mushroom1.setTintFill(0xFF0000); // pratique pour dbugger
         this.groundContainer.add(mushroom2);
-        mushroom1.angle=-5;
+        mushroom1.angle = -5;
         /**
          * Terrain 1
          * @type {Phaser.GameObjects.Image}
          */
-        //ici on va calculer les positions
-        let gMid1=this.add.image(0,350, 'gMid').setOrigin(0,0);
+            //ici on va calculer les positions
+        let gMid1 = this.add.image(0, 350, 'gMid').setOrigin(0, 0);
         this.groundContainer.add(gMid1);
         /**
          * Terrain 3
          * @type {Phaser.GameObjects.Image}
          */
-        let gMid3=this.add.image(gMid1.x+gMid1.width,350, 'gRight').setOrigin(0,0);
+        let gMid3 = this.add.image(gMid1.x + gMid1.width, 350, 'gRight').setOrigin(0, 0);
         this.groundContainer.add(gMid3);
         /**
          * Terrain 4
          *   * @type {Phaser.GameObjects.Image}
          */
-        let gMid4=this.add.image(900,375, 'gMid').setOrigin(0,0);
+        let gMid4 = this.add.image(900, 375, 'gMid').setOrigin(0, 0);
         this.groundContainer.add(gMid4);
-        let gLeft=this.add.image(800,375, 'gLeft').setOrigin(0,0);
+        let gLeft = this.add.image(800, 375, 'gLeft').setOrigin(0, 0);
         this.groundContainer.add(gLeft);
-        let gMid5=this.add.image(1100,375, 'gMid').setOrigin(0,0);
+        let gMid5 = this.add.image(1100, 375, 'gMid').setOrigin(0, 0);
         this.groundContainer.add(gMid5);
-        let gMid6=this.add.image(1200,375, 'gMid').setOrigin(0,0);
+        let gMid6 = this.add.image(1200, 375, 'gMid').setOrigin(0, 0);
         this.groundContainer.add(gMid6);
-        let gMid7=this.add.image(gMid6.x+gMid6.width,375, 'gRight').setOrigin(0,0);
+        let gMid7 = this.add.image(gMid6.x + gMid6.width, 375, 'gRight').setOrigin(0, 0);
         this.groundContainer.add(gMid7);
-        let gMid8=this.add.image(1950,375, 'gMid').setOrigin(0,0);
+        let gMid8 = this.add.image(1950, 375, 'gMid').setOrigin(0, 0);
         this.groundContainer.add(gMid8);
-        let gMid9=this.add.image(1900,375, 'gLeft').setOrigin(0,0);
+        let gMid9 = this.add.image(1900, 375, 'gLeft').setOrigin(0, 0);
         this.groundContainer.add(gMid9);
         /**
          * Eau
          *   * @type {Phaser.GameObjects.Image}
          */
-      let gWater=this.add.image(gMid1.x+gMid1.width+200,650,'gWater').setOrigin(0,1);
-      this.groundContainer.add(gWater);
-        let gWater2=this.add.image(gMid1.x+gMid1.width+230,650,'gWater').setOrigin(0,1);
+        let gWater = this.add.image(gMid1.x + gMid1.width + 200, 650, 'gWater').setOrigin(0, 1);
+        this.groundContainer.add(gWater);
+        let gWater2 = this.add.image(gMid1.x + gMid1.width + 230, 650, 'gWater').setOrigin(0, 1);
         this.groundContainer.add(gWater2);
-       //(gMid3.x+gMid3.width,375, 'g-water')
+        //(gMid3.x+gMid3.width,375, 'g-water')
         /**
          * De l'herbe en textures qui se répète
          * @type {Phaser.GameObjects.TileSprite}
          */
-        let grass=this.add.tileSprite(0,370,gMid3.x+gMid3.width-40,50,'g-grass-1').setOrigin(0,1)
+        let grass = this.add.tileSprite(0, 370, gMid3.x + gMid3.width - 40, 50, 'g-grass-1').setOrigin(0, 1)
         this.groundContainer.add(grass);
         /**
          * encore de l'herbe
          * @type {Phaser.GameObjects.TileSprite}
          */
-        let grass2=this.add.tileSprite(0,370,gMid3.x+gMid3.width-40,50,'g-grass-3').setOrigin(0,1)
+        let grass2 = this.add.tileSprite(0, 370, gMid3.x + gMid3.width - 40, 50, 'g-grass-3').setOrigin(0, 1)
         this.groundContainer.add(grass2);
 
         /**
          * herbe pointue
          * @type {Phaser.GameObjects.TileSprite}
          */
-        let gSpike1=this.add.image(1750,475, 'gSpike1').setOrigin(0,0);
+        let gSpike1 = this.add.image(1750, 475, 'gSpike1').setOrigin(0, 0);
         this.groundContainer.add(gSpike1);
-        let gSpike2=this.add.image(1600,475, 'gSpike1').setOrigin(0,0);
+        let gSpike2 = this.add.image(1600, 475, 'gSpike1').setOrigin(0, 0);
         this.groundContainer.add(gSpike2);
-        let gSpike3=this.add.image(375,450, 'gSpike1').setOrigin(0,0);
+        let gSpike3 = this.add.image(375, 450, 'gSpike1').setOrigin(0, 0);
         this.groundContainer.add(gSpike3);
-        let gSpike4=this.add.image(550,450, 'gSpike1').setOrigin(0,0);
+        let gSpike4 = this.add.image(550, 450, 'gSpike1').setOrigin(0, 0);
         this.groundContainer.add(gSpike4);
-        let gSpike5=this.add.image(700,450, 'gSpike1').setOrigin(0,0);
+        let gSpike5 = this.add.image(700, 450, 'gSpike1').setOrigin(0, 0);
         this.groundContainer.add(gSpike5);
-        let gGrass1=this.add.image(1300,340, 'gGrass1').setOrigin(0,0);
+        let gGrass1 = this.add.image(1300, 340, 'gGrass1').setOrigin(0, 0);
         this.groundContainer.add(gGrass1);
-        let gGrass3=this.add.image(1470,340, 'gGrass3').setOrigin(0,0);
+        let gGrass3 = this.add.image(1470, 340, 'gGrass3').setOrigin(0, 0);
         this.groundContainer.add(gGrass3);
-        let gGrass2=this.add.image(1950,340, 'gGrass2').setOrigin(0,0);
+        let gGrass2 = this.add.image(1950, 340, 'gGrass2').setOrigin(0, 0);
         this.groundContainer.add(gGrass2);
-        let gGrass6=this.add.image(1085,330, 'gGrass6').setOrigin(0,0);
+        let gGrass6 = this.add.image(1085, 330, 'gGrass6').setOrigin(0, 0);
         this.groundContainer.add(gGrass6);
-        let gGrass7=this.add.image(1060,345, 'gGrass7').setOrigin(0,0);
+        let gGrass7 = this.add.image(1060, 345, 'gGrass7').setOrigin(0, 0);
         this.groundContainer.add(gGrass7);
         /**
          * Pont
          * @type {Phaser.GameObjects.Image}
          */
-        let gBridge=this.add.image(350,370,'gBridge').setOrigin(0,1)
+        let gBridge = this.add.image(350, 370, 'gBridge').setOrigin(0, 1)
         this.groundContainer.add(gBridge);
-        gBridge.angle=-2
+        gBridge.angle = -2
         /**
          * Boîte
          * @type {Phaser.GameObjects.Image}
          */
-        let gBox2=this.add.image(455,230, 'gBox2').setOrigin(0,0);
+        let gBox2 = this.add.image(455, 230, 'gBox2').setOrigin(0, 0);
         this.groundContainer.add(gBox2);
-        gBox2.angle=5
+        gBox2.angle = 5
         /**
          * filtre type film au premier plan
          * @type {Phaser.GameObjects.Sprite}
          */
-        this.filterFilm = this.add.sprite(0, 0, 'filterFilm1').setOrigin(0,0);
+        this.filterFilm = this.add.sprite(0, 0, 'filterFilm1').setOrigin(0, 0);
         //animation de 3 images
         this.anims.create({
             key: 'film',
             frames: [
-                {key:'filterFilm1'},
-                {key:'filterFilm2'},
-                {key:'filterFilm3'},
+                {key: 'filterFilm1'},
+                {key: 'filterFilm2'},
+                {key: 'filterFilm3'},
             ],
             frameRate: 16,
             repeat: -1
         });
         this.filterFilm.play('film');
+        /**
+         * AnimationIdle2
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        this.idle2 = this.add.sprite(500, -55, 'layer').setOrigin(0, 0)
+        console.log(frames)
+        this.anims.create({
+            key: 'layer',
+            frames: this.getFrames("layer", 10),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.idle2.play('layer');
+
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
@@ -348,43 +362,48 @@ class Tableau1 extends Phaser.Scene{
          * Vitesse de déplacement du décor
          * @type {number}
          */
-        this.speed=0;
+        this.speed = 0;
         //initialise ce qui se passe avec le clavier
         this.initKeyboard();
         // Définit l'espace de déplacement de la caméra
         this.cameras.main.setBounds(0, 0, 2000, 540);
         //définit à quelles vitesse se déplacent nos différents plans
-        bgAnimationA.scrollFactorX=0;
-        this.filterFilm.scrollFactorX=0;
-        this.bg2Container.scrollFactorX=0.2;
-        this.bg1Container.scrollFactorX=0.4;
-        this.groundContainer.scrollFactorX=1;
+        bgAnimationA.scrollFactorX = 0;
+        this.filterFilm.scrollFactorX = 0;
+        this.bg2Container.scrollFactorX = 0.2;
+        this.bg1Container.scrollFactorX = 0.4;
+        this.groundContainer.scrollFactorX = 1;
     }
+    //fonction pour activer notre animation
+    getFrames(prefix, length) {
+        let frames = [];
+        for (let i = 1; i <= length; i++) {
+            frames.push({key: prefix + i});
+        }
+        return frames;
+    }
+
     /**
      * Définit ce qui se passe quand on appuie ou relache une touche du clavier
      * ALGO : ceci est une fonction ou méthode
      */
-    initKeyboard(){
-        let me=this;
-        this.input.keyboard.on('keydown', function(kevent)
-        {
-            switch (kevent.keyCode)
-            {
+    initKeyboard() {
+        let me = this;
+        this.input.keyboard.on('keydown', function (kevent) {
+            switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.speed=1;
+                    me.speed = 1;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=-1;
+                    me.speed = -1;
                     break;
             }
         });
-        this.input.keyboard.on('keyup', function(kevent)
-        {
-            switch (kevent.keyCode)
-            {
+        this.input.keyboard.on('keyup', function (kevent) {
+            switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.RIGHT:
                 case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.speed=0;
+                    me.speed = 0;
                     break;
             }
         });
@@ -393,12 +412,12 @@ class Tableau1 extends Phaser.Scene{
     /**
      * Cette fonction s'exécute en boucle (à peu près 60 fois par secondes)
      */
-    update(){
+    update() {
         //déplacement de la caméra
-        this.cameras.main.scrollX+=this.speed*8; // on aurait pu écrire : this.cameras.main.scrollX= this.cameras.main.scrollX + this.speed;
+        this.cameras.main.scrollX += this.speed * 8; // on aurait pu écrire : this.cameras.main.scrollX= this.cameras.main.scrollX + this.speed;
 
         //petit effet de vibrance sur le filtre film au tout premier plan
-        this.filterFilm.setAlpha(Phaser.Math.Between(95,100)/100)
+        this.filterFilm.setAlpha(Phaser.Math.Between(95, 100) / 100)
     }
 
 
