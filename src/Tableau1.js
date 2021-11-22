@@ -52,6 +52,9 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('gGrass6', 'assets/level/ground/g-grass-3.png');
         this.load.image('gGrass7', 'assets/level/ground/g-grass-1.png');
 
+        for (let id = 1; id <= 10; id++) {
+            this.load.image('layer' + id, 'Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
+
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
