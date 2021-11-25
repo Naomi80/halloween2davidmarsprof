@@ -67,6 +67,10 @@ class Tableau1 extends Phaser.Scene {
         for (let id3 = 1; id3 <= 10; id3++) {
             this.load.image('layer5' + id3, 'assets/Characters/boy/boy_5/PNG/idle2/Layer-' + id3 + '.png');
         }
+        //Pièges
+        for (let t1 = 1; t1 <= 10; t1++) {
+            this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open' + t1 + '.png');
+        }
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
         // ALGO : ceci est une boucle
@@ -356,7 +360,7 @@ class Tableau1 extends Phaser.Scene {
          * AnimationBoy4Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.idle2_4 = this.add.sprite(500, -55, 'layer4').setOrigin(0, 0)
+        this.idle2_4 = this.add.sprite(1600, -35, 'layer4').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
             key: 'layer4',
@@ -369,7 +373,7 @@ class Tableau1 extends Phaser.Scene {
          * AnimationBoy1Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.idle2_1 = this.add.sprite(300, -55, 'layer1').setOrigin(0, 0)
+        this.idle2_1 = this.add.sprite(430, -50, 'layer1').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
             key: 'layer1',
@@ -382,7 +386,7 @@ class Tableau1 extends Phaser.Scene {
          * AnimationBoy3Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.idle2_3 = this.add.sprite(200, -55, 'layer3').setOrigin(0, 0)
+        this.idle2_3 = this.add.sprite(-35, -20, 'layer3').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
             key: 'layer3',
@@ -395,7 +399,7 @@ class Tableau1 extends Phaser.Scene {
          * AnimationBoy5Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.idle2_5 = this.add.sprite(50, 0, 'layer5').setOrigin(0, 0)
+        this.idle2_5 = this.add.sprite(1200, 10, 'layer5').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
             key: 'layer5',
@@ -404,7 +408,19 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1
         });
         this.idle2_5.play('layer5');
-
+        /**
+         * AnimationTrap1open
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        // this.trap1_open = this.add.sprite(100, 10, 'trap1op').setOrigin(0, 0)
+        //console.log(frames)
+        //this.anims.create({
+            //     key: 'trap1op',
+            //     frames: this.getFrames("trap1op", 10),
+            //      frameRate: 12,
+            //      repeat: -1
+            //   });
+     //   this.trap1_open.play('trap1op');
 
 
 
