@@ -51,9 +51,21 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
         this.load.image('gGrass6', 'assets/level/ground/g-grass-3.png');
         this.load.image('gGrass7', 'assets/level/ground/g-grass-1.png');
-        //Characters
+        //Characters_Boy4
         for (let id = 1; id <= 10; id++) {
-            this.load.image('layer' + id, 'assets/Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
+            this.load.image('layer4' + id, 'assets/Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
+        }
+        //Characters_Boy1
+        for (let id1 = 1; id1 <= 10; id1++) {
+            this.load.image('layer1' + id1, 'assets/Characters/boy/boy_1/PNG/idle2/Layer-' + id1 + '.png');
+        }
+        //Characters_Boy3
+        for (let id2 = 1; id2 <= 10; id2++) {
+            this.load.image('layer3' + id2, 'assets/Characters/boy/boy_3/PNG/idle2/Layer-' + id2 + '.png');
+        }
+        //Characters_Boy5
+        for (let id3 = 1; id3 <= 10; id3++) {
+            this.load.image('layer5' + id3, 'assets/Characters/boy/boy_5/PNG/idle2/Layer-' + id3 + '.png');
         }
 
         //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
@@ -341,18 +353,59 @@ class Tableau1 extends Phaser.Scene {
         });
         this.filterFilm.play('film');
         /**
-         * AnimationIdle2
+         * AnimationBoy4Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.idle2 = this.add.sprite(500, -55, 'layer').setOrigin(0, 0)
+        this.idle2_4 = this.add.sprite(500, -55, 'layer4').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
-            key: 'layer',
-            frames: this.getFrames("layer", 10),
+            key: 'layer4',
+            frames: this.getFrames("layer4", 10),
             frameRate: 12,
             repeat: -1
         });
-        this.idle2.play('layer');
+        this.idle2_4.play('layer4');
+        /**
+         * AnimationBoy1Idle2
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        this.idle2_1 = this.add.sprite(300, -55, 'layer1').setOrigin(0, 0)
+        console.log(frames)
+        this.anims.create({
+            key: 'layer1',
+            frames: this.getFrames("layer1", 10),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.idle2_1.play('layer1');
+        /**
+         * AnimationBoy3Idle2
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        this.idle2_3 = this.add.sprite(200, -55, 'layer3').setOrigin(0, 0)
+        console.log(frames)
+        this.anims.create({
+            key: 'layer3',
+            frames: this.getFrames("layer3", 10),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.idle2_3.play('layer3');
+        /**
+         * AnimationBoy5Idle2
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        this.idle2_5 = this.add.sprite(50, 0, 'layer5').setOrigin(0, 0)
+        console.log(frames)
+        this.anims.create({
+            key: 'layer5',
+            frames: this.getFrames("layer5", 10),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.idle2_5.play('layer5');
+
+
 
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
