@@ -51,6 +51,8 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('gGrass2', 'assets/level/ground/g-grass-2.png');
         this.load.image('gGrass6', 'assets/level/ground/g-grass-3.png');
         this.load.image('gGrass7', 'assets/level/ground/g-grass-1.png');
+        //zombies
+        this.load.image('zombie1', 'assets/Zombies/z1.png');
         //Characters_Boy4
         for (let id = 1; id <= 10; id++) {
             this.load.image('layer4' + id, 'assets/Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
@@ -377,6 +379,12 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1
         });
         //this.filterBloody.play('bloody');
+        /**
+         * Zombie1
+         * @type {Phaser.GameObjects.Image}
+         */
+        let zombie1 = this.add.image(100, 350, 'zombie1').setOrigin(0, 0);
+        this.groundContainer.add(zombie1);
         /**
          * AnimationBoy4Idle2
          * @type  {Phaser.GameObjects.TileSprite}
