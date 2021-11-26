@@ -29,6 +29,9 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('bgGrass5', 'assets/level/background-1/bg-grass-5.png');
         this.load.image('bgGrass6', 'assets/level/background-1/bg-grass-5.png');
         this.load.image('bgBridge', 'assets/level/background-1/bg-wooden-bridge.png');
+        //zombies
+        this.load.image('zombie1', 'assets/Characters/Zombies/z1.png');
+        this.load.image('zombie2', 'assets/Characters/Zombies/z2.png');
         //ground (premier plan noir)
         this.load.image('gMid', 'assets/level/ground/g-mid.png');
         this.load.image('gRight', 'assets/level/ground/g-right.png');
@@ -52,7 +55,8 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('gGrass6', 'assets/level/ground/g-grass-3.png');
         this.load.image('gGrass7', 'assets/level/ground/g-grass-1.png');
         //zombies
-        this.load.image('zombie1', 'assets/Zombies/z1.png');
+        this.load.image('zombie3', 'assets/Characters/Zombies/z3.png');
+
         //Characters_Boy4
         for (let id = 1; id <= 10; id++) {
             this.load.image('layer4' + id, 'assets/Characters/boy/boy_4/PNG/idle2/Layer-' + id + '.png');
@@ -199,6 +203,15 @@ class Tableau1 extends Phaser.Scene {
         let bgBridge = this.add.image(750, 240, 'bgBridge').setOrigin(0, 0);
         this.bg1Container.add(bgBridge);
         bgBridge.angle = -2;
+        /**
+         * Zombie1
+         * @type {Phaser.GameObjects.Image}
+         */
+        let zombie1 = this.add.image(900, 125, 'zombie1').setOrigin(0, 0);
+        this.bg1Container.add(zombie1);
+        let zombie2 = this.add.image(350, 115, 'zombie2').setOrigin(0, 0);
+        this.bg1Container.add(zombie2);
+        zombie2.angle = 15
         //-------------ground (premier plan noir)---------------------------
 
         /**
@@ -383,8 +396,8 @@ class Tableau1 extends Phaser.Scene {
          * Zombie1
          * @type {Phaser.GameObjects.Image}
          */
-        let zombie1 = this.add.image(100, 350, 'zombie1').setOrigin(0, 0);
-        this.groundContainer.add(zombie1);
+        let zombie3 = this.add.image(1700, 400, 'zombie3').setOrigin(0, 0);
+        this.groundContainer.add(zombie3);
         /**
          * AnimationBoy4Idle2
          * @type  {Phaser.GameObjects.TileSprite}
