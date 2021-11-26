@@ -82,10 +82,14 @@ class Tableau1 extends Phaser.Scene {
         for (let f = 1; f <= 3; f++) {
             this.load.image('filterFilm' + f, 'assets/level/filters/film/frame-' + f + '.png');
         }
-
         //this.load.image('filterFilm1', 'assets/level/filters/film/frame-1.png');
         //this.load.image('filterFilm2', 'assets/level/filters/film/frame-2.png');
         //this.load.image('filterFilm3', 'assets/level/filters/film/frame-3.png');
+
+        //filtre bloody
+        for (let b = 1; b <= 3; b++) {
+            this.load.image('filterBloody' + b, 'assets/level/filters/bloody/frame-' + b + '.png');
+        }
 
         //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
         for (let bg = 1; bg <= 3; bg++) {
@@ -357,6 +361,23 @@ class Tableau1 extends Phaser.Scene {
         });
         this.filterFilm.play('film');
         /**
+         * filtre type bloody au premier plan
+         * @type {Phaser.GameObjects.Sprite}
+         */
+        this.filterBloody = this.add.sprite(0, 0, 'filterBloody1').setOrigin(0, 0);
+        //animation de 3 images
+        this.anims.create({
+            key: 'bloody',
+            frames: [
+                {key: 'filterBloody1'},
+                {key: 'filterBloody2'},
+                {key: 'filterBloody3'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        //this.filterBloody.play('bloody');
+        /**
          * AnimationBoy4Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
@@ -382,6 +403,7 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1
         });
         this.idle2_1.play('layer1');
+        this.idle2_1.setFlipX(180)
         /**
          * AnimationBoy3Idle2
          * @type  {Phaser.GameObjects.TileSprite}
@@ -399,7 +421,7 @@ class Tableau1 extends Phaser.Scene {
          * AnimationBoy5Idle2
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.idle2_5 = this.add.sprite(1200, 10, 'layer5').setOrigin(0, 0)
+        this.idle2_5 = this.add.sprite(1000, 10, 'layer5').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
             key: 'layer5',
@@ -408,6 +430,7 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1
         });
         this.idle2_5.play('layer5');
+        this.idle2_5.setFlipX(180)
         /**
          * AnimationTrap1open
          * @type  {Phaser.GameObjects.TileSprite}
