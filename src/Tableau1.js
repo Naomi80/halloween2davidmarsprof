@@ -73,6 +73,7 @@ class Tableau1 extends Phaser.Scene {
         for (let id3 = 1; id3 <= 10; id3++) {
             this.load.image('layer5' + id3, 'assets/Characters/boy/boy_5/PNG/idle2/Layer-' + id3 + '.png');
         }
+        //Ennemy_2
         //Pièges
         for (let t1 = 1; t1 <= 10; t1++) {
             this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open' + t1 + '.png');
@@ -452,19 +453,19 @@ class Tableau1 extends Phaser.Scene {
         });
         this.idle2_5.play('layer5');
         this.idle2_5.setFlipX(180)
-        /**
-         * AnimationTrap1open
-         * @type  {Phaser.GameObjects.TileSprite}
-         */
-        // this.trap1_open = this.add.sprite(100, 10, 'trap1op').setOrigin(0, 0)
+       // /**
+         //* AnimationTrap1open
+         //* @type  {Phaser.GameObjects.TileSprite}
+         //*/
+        //this.trap1_open = this.add.sprite(100, 10, 'trap1op').setOrigin(0, 0)
         //console.log(frames)
         //this.anims.create({
-            //     key: 'trap1op',
-            //     frames: this.getFrames("trap1op", 10),
-            //      frameRate: 12,
-            //      repeat: -1
-            //   });
-     //   this.trap1_open.play('trap1op');
+            //key: 'trap1op',
+            //frames: this.getFrames("trap1op", 10),
+            //frameRate: 12,
+            //repeat: -1
+        //});
+        //this.trap1_open.play('trap1op');
 
 
 
