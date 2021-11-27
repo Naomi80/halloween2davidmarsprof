@@ -74,40 +74,43 @@ class Tableau1 extends Phaser.Scene {
             this.load.image('layer5' + id3, 'assets/Characters/boy/boy_5/PNG/idle2/Layer-' + id3 + '.png');
         }
         //Ennemy_2
-        //Pièges
-        for (let t1 = 1; t1 <= 10; t1++) {
-            this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open' + t1 + '.png');
-        }
+        for (let en2id = 1; en2id <= 10; en2id++) {
+            this.load.image('enemy2idle' + en2id, 'assets/Characters/enemy2/PNG/idle/Layer-' + en2id + '.png');
+            //Pièges
+            for (let t1 = 1; t1 <= 10; t1++) {
+                this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open/Layer-' + t1 + '.png');
+            }
 
-        //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
-        // ALGO : ceci est une boucle
-        for (let i = 1; i <= 5; i++) {
-            this.load.image('g-grass-' + i, 'assets/level/ground/g-grass-' + i + '.png');
-        }
+            //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
+            // ALGO : ceci est une boucle
+            for (let i = 1; i <= 5; i++) {
+                this.load.image('g-grass-' + i, 'assets/level/ground/g-grass-' + i + '.png');
+            }
 
-        //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent
-        for (let f = 1; f <= 3; f++) {
-            this.load.image('filterFilm' + f, 'assets/level/filters/film/frame-' + f + '.png');
-        }
-        //this.load.image('filterFilm1', 'assets/level/filters/film/frame-1.png');
-        //this.load.image('filterFilm2', 'assets/level/filters/film/frame-2.png');
-        //this.load.image('filterFilm3', 'assets/level/filters/film/frame-3.png');
+            //filtre film TODO élève : faire une boucle à la place des 3 lignes qui suivent
+            for (let f = 1; f <= 3; f++) {
+                this.load.image('filterFilm' + f, 'assets/level/filters/film/frame-' + f + '.png');
+            }
+            //this.load.image('filterFilm1', 'assets/level/filters/film/frame-1.png');
+            //this.load.image('filterFilm2', 'assets/level/filters/film/frame-2.png');
+            //this.load.image('filterFilm3', 'assets/level/filters/film/frame-3.png');
 
-        //filtre bloody
-        for (let b = 1; b <= 3; b++) {
-            this.load.image('filterBloody' + b, 'assets/level/filters/bloody/frame-' + b + '.png');
-        }
+            //filtre bloody
+            for (let b = 1; b <= 3; b++) {
+                this.load.image('filterBloody' + b, 'assets/level/filters/bloody/frame-' + b + '.png');
+            }
 
-        //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
-        for (let bg = 1; bg <= 3; bg++) {
-            this.load.image('bg-animation-' + bg, 'assets/level/background-2/bg-animation/bg-animation-' + bg + '.png');
-        }
-        /**
-         * Crée la scène
-         * TODO élèves : reproduire à l'identique assets/level/00-preview-example/sample1.jpg
-         * TODO élèves : plus tard, continuez le décor vers la droite en vous servant des assets mis à votre disposition
-         */
+            //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
+            for (let bg = 1; bg <= 3; bg++) {
+                this.load.image('bg-animation-' + bg, 'assets/level/background-2/bg-animation/bg-animation-' + bg + '.png');
+            }
+            /**
+             * Crée la scène
+             * TODO élèves : reproduire à l'identique assets/level/00-preview-example/sample1.jpg
+             * TODO élèves : plus tard, continuez le décor vers la droite en vous servant des assets mis à votre disposition
+             */
 
+        }
     }
 
     create() {
@@ -453,20 +456,32 @@ class Tableau1 extends Phaser.Scene {
         });
         this.idle2_5.play('layer5');
         this.idle2_5.setFlipX(180)
-       // /**
+        ///**
+         //* AnimationEnemy2Idle
+         //* @type  {Phaser.GameObjects.TileSprite}
+         //*/
+        //this.enemyIdle2 = this.add.sprite(1000, 10, 'enemy2idle').setOrigin(0, 0)
+        //console.log(frames)
+        //this.anims.create({
+            //key: 'enemy2idle',
+            //frames: this.getFrames("enemy2idle", 10),
+            //frameRate: 12,
+            //repeat: -1
+        //});
+        //this.enemyIdle2.play('enemy2idle');
+        ///**
          //* AnimationTrap1open
          //* @type  {Phaser.GameObjects.TileSprite}
          //*/
-        //this.trap1_open = this.add.sprite(100, 10, 'trap1op').setOrigin(0, 0)
+        //this.trap1_open = this.add.sprite(1300, 10, 'trap1op').setOrigin(0, 0)
         //console.log(frames)
         //this.anims.create({
             //key: 'trap1op',
-            //frames: this.getFrames("trap1op", 10),
+            //: this.getFrames("trap1op", 10),
             //frameRate: 12,
             //repeat: -1
         //});
         //this.trap1_open.play('trap1op');
-
 
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
@@ -488,6 +503,7 @@ class Tableau1 extends Phaser.Scene {
         this.bg1Container.scrollFactorX = 0.4;
         this.groundContainer.scrollFactorX = 1;
     }
+
     //fonction pour activer notre animation
     getFrames(prefix, length) {
         let frames = [];
@@ -533,6 +549,7 @@ class Tableau1 extends Phaser.Scene {
         //petit effet de vibrance sur le filtre film au tout premier plan
         this.filterFilm.setAlpha(Phaser.Math.Between(95, 100) / 100)
     }
-
-
 }
+
+
+
