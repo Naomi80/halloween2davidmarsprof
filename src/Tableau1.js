@@ -75,11 +75,11 @@ class Tableau1 extends Phaser.Scene {
         }
         //Ennemy_2
         for (let en2id = 1; en2id <= 10; en2id++) {
-            this.load.image('enemy2idle' + en2id, 'assets/Characters/enemy 2/PNG/idle/Layer-' + en2id + '.png');
+            this.load.image('enemy2idle' + en2id, 'assets/Characters/enemy2/PNG/idle/Layer-' + en2id + '.png');
 
             //Pièges
         for (let t1 = 1; t1 <= 10; t1++) {
-            this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open/Layer-' + t1 + '.png');
+            this.load.image('trap1op' + t1, 'assets/Characters/trap1/PNG/open/Layer-' + t1 + '.png');
 
         }
 
@@ -495,19 +495,19 @@ class Tableau1 extends Phaser.Scene {
             loop: 10,
             delay : 2000,
         });
-        ///**
-         //* AnimationTrap1open
-         //* @type  {Phaser.GameObjects.TileSprite}
-         //*/
-        //this.trap1_open = this.add.sprite(1300, 10, 'trap1op').setOrigin(0, 0)
-        //console.log(frames)
-        //this.anims.create({
-            //key: 'trap1op',
-            //: this.getFrames("trap1op", 10),
-            //frameRate: 12,
-            //repeat: -1
-        //});
-        //this.trap1_open.play('trap1op');
+        /**
+         * AnimationTrap1open
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        this.trap1_open = this.add.sprite(1300, 10, 'trap1op').setOrigin(0, 0)
+        console.log(frames)
+        this.anims.create({
+            key: 'trap1op',
+            frames: this.getFrames("trap1op", 10),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.trap1_open.play('trap1op');
 
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
