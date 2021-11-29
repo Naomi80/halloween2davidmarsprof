@@ -75,11 +75,13 @@ class Tableau1 extends Phaser.Scene {
         }
         //Ennemy_2
         for (let en2id = 1; en2id <= 10; en2id++) {
-            this.load.image('enemy2idle' + en2id, 'assets/Characters/enemy2/PNG/idle/Layer-' + en2id + '.png');
+            this.load.image('enemy2idle' + en2id, 'assets/Characters/enemy 2/PNG/idle/Layer-' + en2id + '.png');
+
             //Pièges
-            for (let t1 = 1; t1 <= 10; t1++) {
-                this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open/Layer-' + t1 + '.png');
-            }
+        for (let t1 = 1; t1 <= 10; t1++) {
+            this.load.image('trap1op' + t1, 'assets/Characters/trap 1/PNG/open/Layer-' + t1 + '.png');
+
+        }
 
             //au lieu d'écrire 5 lignes quasi identiques, on charge l'herbe avec une boucle
             // ALGO : ceci est une boucle
@@ -97,7 +99,7 @@ class Tableau1 extends Phaser.Scene {
 
             //filtre bloody
             for (let b = 1; b <= 3; b++) {
-                this.load.image('filterBloody' + b, 'assets/level/filters/bloody/frame-' + b + '.png');
+                this.load.image('filterBloody' + b, 'assets/level/filters/bloody/frame' + b + '.png');
             }
 
             //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
@@ -119,7 +121,18 @@ class Tableau1 extends Phaser.Scene {
          * Fond très clair avec une trame
          * @type {Phaser.GameObjects.Sprite}
          */
-        let bgAnimationA = this.add.sprite(0, 0, 'bg-animation-a').setOrigin(0, 0);
+        this.bgAnimationA = this.add.sprite(0, 0, 'bg-animation-1').setOrigin(0, 0);
+        this.anims.create({
+            key: 'bgAnimationA',
+            frames: [
+                {key: 'bg-animation-1'},
+                {key: 'bg-animation-2'},
+                {key: 'bg-animation-3'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        //this.filterBloody.play('bgAnimationA');
 
         //--------------background 2 (tout au fond et flou)--------------------
 
@@ -379,6 +392,7 @@ class Tableau1 extends Phaser.Scene {
             repeat: -1
         });
         this.filterFilm.play('film');
+        this.filterFilm.setVisible(false)
         /**
          * filtre type bloody au premier plan
          * @type {Phaser.GameObjects.Sprite}
@@ -395,7 +409,7 @@ class Tableau1 extends Phaser.Scene {
             frameRate: 16,
             repeat: -1
         });
-        //this.filterBloody.play('bloody');
+        this.filterBloody.play('bloody');
         /**
          * Zombie1
          * @type {Phaser.GameObjects.Image}
@@ -456,19 +470,31 @@ class Tableau1 extends Phaser.Scene {
         });
         this.idle2_5.play('layer5');
         this.idle2_5.setFlipX(180)
-        ///**
-         //* AnimationEnemy2Idle
-         //* @type  {Phaser.GameObjects.TileSprite}
-         //*/
-        //this.enemyIdle2 = this.add.sprite(1000, 10, 'enemy2idle').setOrigin(0, 0)
-        //console.log(frames)
-        //this.anims.create({
-            //key: 'enemy2idle',
-            //frames: this.getFrames("enemy2idle", 10),
-            //frameRate: 12,
-            //repeat: -1
-        //});
-        //this.enemyIdle2.play('enemy2idle');
+        /**
+         * AnimationEnemy2Idle
+         * @type  {Phaser.GameObjects.TileSprite}
+         */
+        this.enemyIdle2 = this.add.sprite(1000, 10, 'enemy2idle').setOrigin(0, 0)
+        console.log(frames)
+        this.anims.create({
+            key: 'enemy2idle',
+            frames: this.getFrames("enemy2idle", 6),
+            frameRate: 12,
+            repeat: -1
+        });
+        this.enemyIdle2.play('enemy2idle');
+        this.enemyIdle2.setScale(0.5)
+
+        let enemyIdle2 = this.enemyIdle2
+        let tween = this.tweens.add({
+            targets: enemyIdle2,
+            x: 600,
+            duration: 3000,
+            ease: 'Power2',
+            yoyo : true,
+            loop: 10,
+            delay : 2000,
+        });
         ///**
          //* AnimationTrap1open
          //* @type  {Phaser.GameObjects.TileSprite}
@@ -497,8 +523,8 @@ class Tableau1 extends Phaser.Scene {
         // Définit l'espace de déplacement de la caméra
         this.cameras.main.setBounds(0, 0, 2000, 540);
         //définit à quelles vitesse se déplacent nos différents plans
-        bgAnimationA.scrollFactorX = 0;
-        this.filterFilm.scrollFactorX = 0;
+        // this.bgAnimationA.scrollFactorX = 0;
+        this.filterBloody.scrollFactorX = 0;
         this.bg2Container.scrollFactorX = 0.2;
         this.bg1Container.scrollFactorX = 0.4;
         this.groundContainer.scrollFactorX = 1;
