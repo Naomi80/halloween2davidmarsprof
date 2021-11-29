@@ -492,7 +492,7 @@ class Tableau1 extends Phaser.Scene {
             duration: 3000,
             ease: 'Power2',
             yoyo : true,
-            loop: 10,
+            loop: -1,
             delay : 2000,
         });
         /**
