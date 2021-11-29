@@ -107,8 +107,8 @@ class Tableau1 extends Phaser.Scene {
                 this.load.image('bg-animation-' + bg, 'assets/level/background-2/bg-animation/bg-animation-' + bg + '.png');
             }
             //filtre snow
-            for (let s = 1; s <= 3; s++) {
-                this.load.image('snow' + s, 'assets/level/weather/snow/frame-' + s + '.png');
+            for (let s = 1; s <= 5; s++) {
+                this.load.image('filterSnow' + s, 'assets/level/weather/snow/frame-' + s + '.png');
             }
             /**
              * Crée la scène
@@ -230,9 +230,11 @@ class Tableau1 extends Phaser.Scene {
          */
         let zombie1 = this.add.image(900, 125, 'zombie1').setOrigin(0, 0);
         this.bg1Container.add(zombie1);
+        zombie1.setAlpha(0.3)
         let zombie2 = this.add.image(350, 115, 'zombie2').setOrigin(0, 0);
         this.bg1Container.add(zombie2);
         zombie2.angle = 15
+        zombie2.setAlpha(0.6)
         //-------------ground (premier plan noir)---------------------------
 
         /**
@@ -508,21 +510,21 @@ class Tableau1 extends Phaser.Scene {
         this.enemyIdle2.play('enemy2idle');
         this.enemyIdle2.setScale(0.5)
 
-        let enemyIdle2 = this.enemyIdle2
-        let tween = this.tweens.add({
-            targets: enemyIdle2,
-            x: 600,
+        this.tweens.add({
+            targets: this.enemyIdle2,
+            x: 1300,
             duration: 3000,
-            ease: 'Power2',
+            ease: 'linear',
             yoyo : true,
-            loop: -1,
-            delay : 2000,
+            flipX: true,
+            repeat: -1,
+            delay : 0,
         });
         /**
          * AnimationTrap1open
          * @type  {Phaser.GameObjects.TileSprite}
          */
-        this.trap1_open = this.add.sprite(1300, 10, 'trap1op').setOrigin(0, 0)
+        this.trap1_open = this.add.sprite(900, 220, 'trap1op').setOrigin(0, 0)
         console.log(frames)
         this.anims.create({
             key: 'trap1op',
