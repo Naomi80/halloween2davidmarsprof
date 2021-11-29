@@ -230,7 +230,7 @@ class Tableau1 extends Phaser.Scene {
          */
         let zombie1 = this.add.image(900, 125, 'zombie1').setOrigin(0, 0);
         this.bg1Container.add(zombie1);
-        zombie1.setAlpha(0.3)
+        zombie1.setAlpha(0.5)
         let zombie2 = this.add.image(350, 115, 'zombie2').setOrigin(0, 0);
         this.bg1Container.add(zombie2);
         zombie2.angle = 15
