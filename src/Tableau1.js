@@ -74,11 +74,11 @@ class Tableau1 extends Phaser.Scene {
             this.load.image('layer5' + id3, 'assets/Characters/boy/boy_5/PNG/idle2/Layer-' + id3 + '.png');
         }
         //Ennemy_2
-        for (let en2id = 1; en2id <= 10; en2id++) {
+        for (let en2id = 1; en2id <= 6; en2id++) {
             this.load.image('enemy2idle' + en2id, 'assets/Characters/enemy2/PNG/idle/Layer-' + en2id + '.png');
 
             //Pièges
-        for (let t1 = 1; t1 <= 10; t1++) {
+        for (let t1 = 1; t1 <= 5; t1++) {
             this.load.image('trap1op' + t1, 'assets/Characters/trap1/PNG/open/Layer-' + t1 + '.png');
 
         }
@@ -105,6 +105,10 @@ class Tableau1 extends Phaser.Scene {
             //texture au fond  TODO élève : faire une boucle pour charger les 3 images et démontrer par la même que vous savez aller au plus simple
             for (let bg = 1; bg <= 3; bg++) {
                 this.load.image('bg-animation-' + bg, 'assets/level/background-2/bg-animation/bg-animation-' + bg + '.png');
+            }
+            //filtre snow
+            for (let s = 1; s <= 3; s++) {
+                this.load.image('snow' + s, 'assets/level/weather/snow/frame-' + s + '.png');
             }
             /**
              * Crée la scène
@@ -411,6 +415,25 @@ class Tableau1 extends Phaser.Scene {
         });
         this.filterBloody.play('bloody');
         /**
+         * filtre type snow au premier plan
+         * @type {Phaser.GameObjects.Sprite}
+         */
+        this.filtersnow = this.add.sprite(0, 0, 'filterSnow1').setOrigin(0, 0);
+        //animation de 3 images
+        this.anims.create({
+            key: 'snow',
+            frames: [
+                {key: 'filterSnow1'},
+                {key: 'filterSnow2'},
+                {key: 'filterSnow3'},
+                {key: 'filterSnow4'},
+                {key: 'filterSnow5'},
+            ],
+            frameRate: 16,
+            repeat: -1
+        });
+        this.filtersnow.play('snow');
+        /**
          * Zombie1
          * @type {Phaser.GameObjects.Image}
          */
@@ -503,12 +526,12 @@ class Tableau1 extends Phaser.Scene {
         console.log(frames)
         this.anims.create({
             key: 'trap1op',
-            frames: this.getFrames("trap1op", 10),
+            frames: this.getFrames("trap1op", 5),
             frameRate: 12,
             repeat: -1
         });
         this.trap1_open.play('trap1op');
-
+        this.trap1_open.setScale(0.5)
 
         //TODO élève faire une animation du même genre que filter mais pour bgAnimationA
 
@@ -523,8 +546,9 @@ class Tableau1 extends Phaser.Scene {
         // Définit l'espace de déplacement de la caméra
         this.cameras.main.setBounds(0, 0, 2000, 540);
         //définit à quelles vitesse se déplacent nos différents plans
-        // this.bgAnimationA.scrollFactorX = 0;
+        this.bgAnimationA.scrollFactorX = 0;
         this.filterBloody.scrollFactorX = 0;
+        this.filtersnow.scrollFactorX = 0;
         this.bg2Container.scrollFactorX = 0.2;
         this.bg1Container.scrollFactorX = 0.4;
         this.groundContainer.scrollFactorX = 1;
